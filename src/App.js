@@ -1,51 +1,69 @@
-import logo from './logo.svg';
-import ImageUpload from './ImageUpload';
-import TimeInput from './TimeInput';
-import {useState} from 'react';
-import SuccessPage from './loadSuccess';
-import SelectLabels from './SeleteDrop';
-import CheckBug from './CheckBug';
-import Bank from './Bank';
-import { Button } from '@mui/material';
-import { Navigate } from 'react-router-dom';
-import Link from '@mui/material/Link';
-import * as React from 'react';
-import { useNavigate } from "react-router-dom";
-import loadMap from './loadMap';
-
+import React, { useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import 'leaflet/dist/leaflet.css';
 
 function App() {
-  const [gender,setGender]=useState();
-  const navigate = useNavigate();
-  
-  const handleClick = () => {
-    navigate("/page2")
+  const [location, setLocation] = useState(null);
+  const [query, setQuery] = useState("");
+  const DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+  });
+  L.Marker.prototype.options.icon = DefaultIcon;
+  function handleSearch(e) {
+    e.preventDefault();
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
+      .then(response => response.json())
+      .then(data => {
+        setLocation({
+          lat: parseFloat(data[0].lat),
+          lon: parseFloat(data[0].lon),
+          display_name: data[0].display_name
+        });
+      })
+      .catch(error => console.log(error));
   }
-  return(
-    <div style={{textAlign:'center'}}>
-      <h1>ชื่อสถานีชาร์จ</h1>
-      <input type="text" placeholder='ตั้งชื่อสถานีชาร์จของคุณ' style={{height:50, width:550,textAlign:'center'}}/>
-      <h2>เลือกประเภทของสถานที่ตั้ง</h2>
-      <input type="radio" name="gender" value="Male" onChange={e=>setGender(e.target.value)}/>รูป Male
-      <input type="radio" name="gender" value="Female" onChange={e=>setGender(e.target.value)}/>รูป Female
-      <input type="radio" name="gender" value="Female" onChange={e=>setGender(e.target.value)}/>รูป Female
-      <input type="radio" name="gender" value="male" onChange={e=>setGender(e.target.value)}/>รูป male
-      <input type="radio" name="gender" value="Female" onChange={e=>setGender(e.target.value)}/>รูป Female
-      <input type="radio" name="gender" value="Female" onChange={e=>setGender(e.target.value)}/>รูป Female
-      <h4>เบอร์โทรติดต่อสถานีชาร์จ
-      <input type='tel' placeholder='เบอร์โทรติดต่อสถานีชาร์จ' style={{height:30, width:250,textAlign:'center',margin:10}}/>
-      </h4>
-      <TimeInput/>
-      <ImageUpload/>
-      <Button onClick={handleClick}>Next</Button>
-        <CheckBug/> 
-       <SelectLabels/> 
-       <Bank/> 
-      <SuccessPage/>
-      {/* jnkjnjnk */}
-      <loadMap/>
-    </div>
-  )
-}
 
+  function SearchBar() {
+    const map = useMap();
+
+    function handleSubmit(e) {
+      handleSearch(e);
+      map.flyTo([location.lat, location.lon], 13);
+    }
+
+    return (
+      <form onSubmit={handleSubmit}>
+      <input type="text" value={query} onChange={e => setQuery(e.target.value)} />
+      <button type="submit">Search</button>
+    </form>
+  );
+}
+  return (
+    <div>
+    <MapContainer center={[13.7563, 100.5018]} zoom={13} style={{ height: "500px",width:"1000px" }} locale="th">
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+      />
+      
+      {location && (
+        <Marker position={[location.lat, location.lon]}>
+          <Popup>
+            {location.display_name}
+          </Popup>
+        </Marker>
+      )}
+      <SearchBar />
+    </MapContainer>
+    </div>
+  );
+}
 export default App;

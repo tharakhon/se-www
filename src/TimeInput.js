@@ -4,10 +4,12 @@ function TimeInput() {
     const [times, setTimes] = React.useState("");
   
     const handleChange = (event) => {
-      setTime(event.target.value);
+      setTime(event.target.value); 
+      console.log(event.target.value);
     };
     const handleChanges = (event) => {
         setTimes(event.target.value);
+        console.log(event.target.value);
       };
   
     return (
@@ -22,6 +24,7 @@ function TimeInput() {
         value={times}
         onChange={handleChanges}
       /></h2>
+    
       </div>
     );
   }

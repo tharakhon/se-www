@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from "react";
 import { Button } from "@mui/material";
 import {RiDeleteBinLine} from "react-icons/ri";
+import Navbar from "./NavBar";
 function Bank(){
     const [inputs, setInputs] = React.useState([{ age: '', quantity: '', price: ''}]);
     const [accountNumber, setAccountNumber] = useState('');
@@ -38,7 +39,9 @@ function Bank(){
         setInputs(newInputs);
       };
     return(
-        <div>
+        <div style={{textAlign:'center',justifyContent:'center'}}>
+          <Navbar/>
+          <h1>ช่องทางการชำระเงิน</h1>
             {inputs.map((input, index) => (
                 <div key={index} style={{ display: 'flex', justifyContent: 'center', padding: 10 }}>
             <TextField
@@ -62,6 +65,7 @@ function Bank(){
                 <MenuItem value={30}>GSB</MenuItem>
                 <MenuItem value={30}>GHB</MenuItem>
               </TextField>
+              <br/>
               <TextField
               type='text'
               label="เลขบัญชี"
@@ -75,14 +79,16 @@ function Bank(){
             type='file'
             onChange={handleChanges}>
             </TextField>
-            {image && <img src={image} alt='upload'/>}
+            {image && <img src={image} alt='upload' style={{width:100}}/>}
             {index > 0 && (
-              <Button onClick={() => handleDelete(index)}>
-              </Button>
+              <Button onClick={() => handleDelete(index)}></Button>
             )}
               </div>
             ))}
-            
+            <div style={{display:'flex', justifyContent:'space-between'}}>
+                <Button variant="contained">Back</Button>
+                <Button variant="contained">Next</Button>
+            </div>
         </div>
     )
 }

@@ -7,8 +7,10 @@ import {TiDelete} from "react-icons/ti";
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import { TextField } from '@mui/material';
+import AddHomeWorkSharpIcon from '@mui/icons-material/AddHomeWorkSharp';
 
-const ImageUpload = () => {
+function ImageUpload() {
 const [images, setImages] = useState([]);
 const [disableUpload, setDisableUpload] = useState(false);
 
@@ -34,13 +36,12 @@ const handleDelete = (index) => {
 
 return (
   <div>
-     <Container fixed>
-     <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' ,border:'3px solid black'}} >
+    
     <h4>เพิ่มรูปภาพสถานที่และหัวชาร์จ สูงสุด 5 ภาพที่ใช้ในการเติมรถ EV</h4>
     <label htmlFor="file-input">
         <BiImageAdd size={100} />
       </label>
-    <input type="file"  multiple id="file-input" onChange={handleChange} style={{ display: 'none'}} disabled={disableUpload} />
+    <TextField type="file"  multiple id="file-input" onChange={handleChange} style={{ display: 'none'}} disabled={disableUpload} />
     <h4>คลิกเพื่อเพิ่มรูปภาพสถานที่และหัวชาร์จ</h4>
     <Grid container spacing={{ xs: 10, md: 0}} justifyContent='center'>
     <ImageList sx={{ width: 500, height: 250 }} cols={3}>
@@ -54,12 +55,10 @@ return (
               <TiDelete size={20}/>
             </Button>
       </ImageListItem>
-      
   ))}
   </ImageList>
   </Grid>
-  </Box>
-</Container>
+ 
   </div>
 );
 };

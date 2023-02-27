@@ -1,10 +1,13 @@
 import React from "react";
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Navbar from "./NavBar";
+import { Button } from "@mui/material";
 function CheckBug(){
     
     return(
-        <div>
+        <div style={{textAlign:'center',justifyContent:'center'}}>
+            <Navbar/>
             <h4>ที่พักของคุณมีหัวชาร์ตใดบ้าง</h4>
             <FormControlLabel control={<Checkbox/>} label='bug 1'/>
             <br/>
@@ -26,7 +29,10 @@ function CheckBug(){
             <br/>
             <FormControlLabel control={<Checkbox/>} label='bug 10'/>
             
-            
+            <div style={{display:'flex', justifyContent:'space-between'}}>
+                <Button variant="contained">Back</Button>
+                <Button variant="contained">Next</Button>
+            </div>
         
         </div>
     )

@@ -5,6 +5,7 @@ import {RiDeleteBinLine} from "react-icons/ri";
 import { Button } from '@mui/material';
 import {IoMdAddCircleOutline} from "react-icons/io";
 import TextField from '@mui/material/TextField';
+import Navbar from './NavBar';
 
 
 function SelectLabels() {
@@ -54,7 +55,8 @@ function SelectLabels() {
   
 
   return (
-    <div>
+    <div style={{textAlign:'center',justifyContent:'center'}}>
+      <Navbar/>
       <h1>เพิ่มข้อมูลของหัวชาร์จของคุณ</h1>
       {inputs.map((input, index) => (
         <div key={index}>

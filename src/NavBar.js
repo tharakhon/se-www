@@ -7,7 +7,7 @@ const Navbar = () => {
             <section>
                 <div style={{display:'flex' ,backgroundColor: "#3C096C"}}>
                     <div>
-                        <img src={logo} height={80} width={80} style={{padding:20}}/>
+                        <img src={logo}  style={{padding:20,height:80,width:80}}/>
                     </div>
                     <div>
                         <p style={{color:'white',padding:25,fontSize:20}}>Plug Mood</p>

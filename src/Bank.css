@@ -1,0 +1,9 @@
+.main-container{
+    display: grid;
+   
+}
+.container-p{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

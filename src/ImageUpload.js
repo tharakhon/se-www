@@ -5,10 +5,8 @@ import Grid from '@mui/material/Grid';
 import { BiImageAdd } from "react-icons/bi";
 import {TiDelete} from "react-icons/ti";
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import { TextField } from '@mui/material';
-import AddHomeWorkSharpIcon from '@mui/icons-material/AddHomeWorkSharp';
+import { IconButton, TextField } from '@mui/material';
+
 
 function ImageUpload() {
 const [images, setImages] = useState([]);
@@ -38,9 +36,11 @@ return (
   <div>
     
     <h4>เพิ่มรูปภาพสถานที่และหัวชาร์จ สูงสุด 5 ภาพที่ใช้ในการเติมรถ EV</h4>
+    <IconButton>
     <label htmlFor="file-input">
         <BiImageAdd size={100} />
       </label>
+      </IconButton>
     <TextField type="file"  multiple id="file-input" onChange={handleChange} style={{ display: 'none'}} disabled={disableUpload} />
     <h4>คลิกเพื่อเพิ่มรูปภาพสถานที่และหัวชาร์จ</h4>
     <Grid container spacing={{ xs: 10, md: 0}} justifyContent='center'>

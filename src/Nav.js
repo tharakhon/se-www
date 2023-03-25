@@ -6,20 +6,23 @@ import Bank from './Bank';
 import React from 'react';
 import App from './App';
 import MainPage from "./mainPage";
+import MapContainer from "./MapContainer";
+import RequestPage from "./RequestPage";
+import MapApis from "./mapApi";
 
 
 function Nav(){
     return(
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Bank />}>
-            {/* <Route index element={<Home />} /> */}
-            <Route path="/page2" element={<MainPage />} />
-            <Route path="/page3" element={<CheckBug />} />
-            <Route path="/page4" element={<App />} />
-            <Route path="/page4" element={<SelectLabels />} />
-            <Route path="/page4" element={<SuccessPage />} />
-          </Route>
+          <Route exact path="/" element={<MainPage />}/>
+          <Route path="/page2" element={<CheckBug />} />
+          <Route path="/page3" element={<SelectLabels />} />
+          <Route path="/page4" element={<MapApis/>} />
+          <Route path="/page5" element={<Bank />} />
+          <Route path="/page6" element={<RequestPage />} />
+          <Route path="/page7" element={<SuccessPage />} />
+          
         </Routes>
   </BrowserRouter>
   );

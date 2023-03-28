@@ -68,7 +68,7 @@ function MainPage() {
       <h2>เลือกประเภทของสถานที่ตั้ง</h2>
       <FormControl style={{justifyContent:'center'}}>
         <RadioGroup onChange={handerClick2}>
-      <FormControlLabel  value="ปั๊มน้ำมัน" control={<Radio />} label={<div><FaGasPump size={50}/>ปั๊มน้ำมัน</div>}/>
+      <FormControlLabel  value="ปั๊มน้ำมัน" control={<Radio />} label={<div><FaGasPump size={50} />ปั๊มน้ำมัน</div>}/>
       <FormControlLabel  value="บ้าน" control={<Radio />} label={<div><BsHouseDoorFill size={50}/>บ้าน</div>}/>
       <FormControlLabel  value="หมู่บ้าน" control={<Radio />} label={<div><GiVillage size={50}/>หมู่บ้าน</div>}/>
       <FormControlLabel  value="คอนโด" control={<Radio />} label={<div><FaHotel size={50}/>คอนโด</div>}/>

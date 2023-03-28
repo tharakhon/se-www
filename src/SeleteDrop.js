@@ -37,12 +37,6 @@ function SelectLabels() {
     const {name, value} = event.target;
     const newInputs = [...inputs];
     newInputs[index]={...newInputs[index],[name]:value};
-    if(name === 'quantity' && value < 1){
-      newInputs[index]={...newInputs[index],[name]:1};
-    }
-    if(name === 'price' && value < 0){
-      newInputs[index]={...newInputs[index],[name]:0};
-    }
     setInputs(newInputs);
     console.log(inputs)
   };
@@ -105,13 +99,13 @@ function SelectLabels() {
       {checkInputs.map((inputs, index) => (
         <div key={index}>
           <div style={{ display: 'flex', justifyContent: 'center', padding: 10 }}>
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <FormControl >
+          <InputLabel id="demo-simple-select-label">เลือกหัวปลั๊ก</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={age[index]}
-            label="Age"
+            label="เลือกหัวปลั๊ก"
             key={index}
             onChange={handleChange1}
             style={{width:250}}
@@ -132,8 +126,8 @@ function SelectLabels() {
               value={inputs.quantity}
               onChange={(event) => handleInputChange(index, event)}
               onBlur={(event) => {
-                if(event.target.value < 0){
-                  event.target.value = 0;
+                if(event.target.value < 1){
+                  event.target.value = 1;
                 }
               }}
             />
@@ -144,6 +138,11 @@ function SelectLabels() {
               value={inputs.price}
               helperText="บาท/กิโลวัต (ขั้นต่ำ 0 บาท)"
               onChange={(event) => handleInputChange(index, event)}
+              onBlur={(event) => {
+                if(event.target.value < 0){
+                  event.target.value = 0;
+                }
+              }}
             />
             {/* {index > 0 && (
               <Button onClick={() => handleRemoveInput(index)}>

@@ -22,11 +22,6 @@ export default function RequestPage({ state }) {
                 <Grid container spacing={2} marginLeft={1}>
                     <Grid item xs={12} sm={12}>
                         <Grid container spacing={0}>
-                            <Grid item xs={1} sm={1} >
-                                <IconButton onClick={() => navigate(-1) }>
-                                    <KeyboardArrowLeftIcon fontSize="large" />
-                                </IconButton>
-                            </Grid>
                             <Grid item xs={11} sm={11} marginTop={1}>
                                 <div>
                                     <Typography variant="h5">hello</Typography>

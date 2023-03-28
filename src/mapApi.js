@@ -7,30 +7,39 @@ import {Input} from '@chakra-ui/react';
 import {Text} from '@chakra-ui/react';
 import {TbLocationFilled} from 'react-icons/tb';
 import {FaTimesCircle} from 'react-icons/fa';
-import {useJsApiLoader,GoogleMap,Marker} from '@react-google-maps/api';
+import {useJsApiLoader,GoogleMap,Marker,LoadScript,
+Autocomplete,} from '@react-google-maps/api';
 import { Skeleton } from '@mui/material';
+
 
 
 const center = {lat:13.72917,lng:100.52389}
 function MapApis() {
+  
     const {isLoaded} = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        googleMapsApiKey: 'AIzaSyCPLldINYn2Ieus0zkmZt1ytSFJtKjFGRg',
     })
-    
+    const markers = [
+      { position: { lat: 13.72917, lng: 100.52389 } }, // สร้าง Marker ที่พิกัดเดียวกับ Center
+      { position: { lat: 13.73003, lng: 100.53601 } },
+      { position: { lat: 13.74003, lng: 100.54601 } }, // สร้าง Marker อีกตำแหน่งหนึ่ง
+    ];
     if(!isLoaded){
         return <Skeleton/>
     }
+    
   return (
     <Flex
-      position='absolute'
+      position='relative'
       flexDirection='column'
       alignItems='center'
       bgColor='blue.200'
       h='100vh'
       w='100vw'
     >
-      <Box position='relative' left={0} top={0} h='100%' w='100%' >
-        <GoogleMap center={center} 
+      <Box position='relative' left={0} top={0} h='50%' w='50%' >
+        <GoogleMap 
+        center={center} 
         zoom={15} 
         mapContainerStyle={{width:'100%',height:'100%'}}
         options={{
@@ -40,7 +49,9 @@ function MapApis() {
           fullscreenControl: false
         }}
         > 
-        <Marker position={center}/>
+       {markers.map((marker, index) => (
+            <Marker key={index} position={marker.position} />
+          ))}
         </GoogleMap>
         </Box>
       <Box

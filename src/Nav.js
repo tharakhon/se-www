@@ -6,7 +6,6 @@ import Bank from './Bank';
 import React from 'react';
 import App from './App';
 import MainPage from "./mainPage";
-import MapContainer from "./MapContainer";
 import RequestPage from "./RequestPage";
 import MapApis from "./mapApi";
 

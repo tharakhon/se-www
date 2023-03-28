@@ -94,12 +94,12 @@ function Bank(){
           <Navbar/>
           <h1>ช่องทางการชำระเงิน</h1>
               <FormControl>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel id="demo-simple-select-label">เลือกธนาคาร</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={age}
-                    label="Age"
+                    label="เลือกธนาคาร"
                     onChange={handleChange1}
                     style={{width:250}}
                   >
@@ -134,9 +134,9 @@ function Bank(){
             {fileUrl && (
               <>
                 {selectedFile.type === 'image/jpeg' || selectedFile.type === 'image/png' ? (
-                  <img src={fileUrl} alt="Uploaded image" />
+                  <img src={fileUrl} alt="Uploaded image" width="35%" height="450px" />
                 ) : (
-                  <embed src={fileUrl} type={selectedFile.type} width="100%" height="500px" />
+                  <embed src={fileUrl} type={selectedFile.type} width="50%" height="450px" />
                 )}
               </>
             )}
@@ -148,7 +148,7 @@ function Bank(){
         <Button variant="contained" onClick={handerBack}>
           Back
         </Button>
-        <Button variant="contained" onClick={handleSubmit}>
+        <Button variant="contained" onClick={handerClick}>
           Next
         </Button>
       </div>

@@ -1,10 +1,10 @@
 import React from 'react';
-import MyComponent from '../src/MapContainer';
+import MapApis from './mapApi';
 
 const App = () => {
   return (
     <div>
-      <MyComponent />
+      <MapApis/>
     </div>
   );
 }

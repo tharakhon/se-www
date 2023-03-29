@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { Button } from '@mui/material';
 import ImageUpload from './ImageUpload';
 import TimeInput from './TimeInput';
-import {FaGasPump} from 'react-icons/fa'
-import {BsHouseDoorFill} from 'react-icons/bs'
-import {GiVillage} from 'react-icons/gi'
-import {FaHotel} from 'react-icons/fa'
-import {RiHotelFill} from 'react-icons/ri'
+import {FaGasPump} from 'react-icons/fa';
+import {BsHouseDoorFill} from 'react-icons/bs';
+import {GiVillage} from 'react-icons/gi';
+import {FaHotel} from 'react-icons/fa';
+import {RiHotelFill} from 'react-icons/ri';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';

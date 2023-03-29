@@ -17,25 +17,13 @@ export default function RequestPage({ state }) {
         navigate(-1)
       }
     return (
+        <div>
         <Grid container spacing={2} justifyContent="center" alignItems="center" marginBottom={5}>
             <Grid item xs={6} sm={6}>
                 <Grid container spacing={2} marginLeft={1}>
                     <Grid item xs={12} sm={12}>
-                        <Grid container spacing={0}>
-                            <Grid item xs={11} sm={11} marginTop={1}>
-                                <div>
-                                    <Typography variant="h5">hello</Typography>
-                                </div>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
                         <div>
-                            <Typography variant="h5">เจ้าของ: hello</Typography>
-                        </div>
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                        <div>
+                            <h2>ชื่อสถานีชาร์จ</h2>
                             <Typography variant="subtitle1" >
                                 สถานีชาร์จในบ้าน โดย ชื่อเจ้าของบ้าน
                             </Typography>
@@ -118,10 +106,16 @@ export default function RequestPage({ state }) {
                             <Grid item xs={3} sm={3}>
                                 <div>
                                     <Typography variant="subtitle2">
-                                        ราคา xxx บาท/กิโลวัต
+                                        ราคาค่าสถานที่ 0 บาท
                                     </Typography>
                                 </div>
                             </Grid>
+                            <Grid item xs={3} sm={3}>
+                                <Typography variant="subtitle2">
+                                    ราคาค่าสถานที่ 0 บาท
+                                </Typography>
+                            </Grid>
+                            
                         </Grid>
                         <Grid item xs={12} sm={12} marginTop={2}>
                             <div>
@@ -174,6 +168,18 @@ export default function RequestPage({ state }) {
                                 <Grid item xs={12} sm={12}>
                                     <div>
                                         <Typography variant="subtitle1">Cafe</Typography>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs={12} sm={12} marginTop={2}>
+                            <div>
+                                <Typography variant="h5">ความปลอดภัย</Typography>
+                            </div>
+                            <Grid container spacing={0} >
+                                <Grid item xs={12} sm={12}>
+                                    <div>
+                                        <Typography variant="subtitle1">กล้องวงจรปิด</Typography>
                                     </div>
                                 </Grid>
                             </Grid>
@@ -241,11 +247,11 @@ export default function RequestPage({ state }) {
                     </Grid>
                 </Grid>
             </Grid>
-            <div style={{display:'flex', justifyContent:'space-between'}}>
-                <Button variant="contained" onClick={handerBack}>Back</Button>
-                <Button variant="contained" onClick={handerClick}>Next</Button>
-            </div>
-        
         </Grid>
+        <div style={{display:'flex', justifyContent:'space-between'}}>
+                <Button variant="contained" onClick={handerBack}>Back</Button>
+                <Button variant="contained" onClick={handerClick}>Submit</Button>
+            </div>
+        </div>
     );
 }

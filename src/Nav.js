@@ -14,11 +14,11 @@ function Nav(){
     return(
     <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<MainPage />}/>
+          <Route exact path="/" element={<MainPage/>}/>
           <Route path="/page2" element={<CheckBug />} />
           <Route path="/page3" element={<SelectLabels />} />
-          <Route path="/page4" element={<MapApis/>} />
-          <Route path="/page5" element={<Bank />} />
+          <Route path="/page4" element={<App/>} />
+          <Route path="/page5" element={<Bank/>} />
           <Route path="/page6" element={<RequestPage />} />
           <Route path="/page7" element={<SuccessPage />} />
           

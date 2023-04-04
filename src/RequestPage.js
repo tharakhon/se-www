@@ -5,9 +5,12 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import { useEffect,useState } from "react";
+import axios from 'axios';
 
 export default function RequestPage({ state }) {
     const navigate = useNavigate();
+    const [user, setUser] = useState([]);
     function handerClick(){
       
         navigate('/page7')
@@ -16,6 +19,14 @@ export default function RequestPage({ state }) {
       
         navigate(-1)
       }
+      useEffect(() => {
+        axios.get('http://localhost:5000/api/data/register?id='+16)
+        .then(respone => {
+          setUser(respone.data.results)
+        })
+        
+      },[])
+      
     return (
         <div>
         <Grid container spacing={2} justifyContent="center" alignItems="center" marginBottom={5}>
@@ -24,9 +35,14 @@ export default function RequestPage({ state }) {
                     <Grid item xs={12} sm={12}>
                         <div>
                             <h2>ชื่อสถานีชาร์จ</h2>
-                            <Typography variant="subtitle1" >
-                                สถานีชาร์จในบ้าน โดย ชื่อเจ้าของบ้าน
-                            </Typography>
+                            
+                            {user.map((item) => (
+                                <div >
+                                    <Typography variant="subtitle1" >{item.nameL}</Typography>
+                                   
+                                </div>
+                            ))}
+                           
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={12}>

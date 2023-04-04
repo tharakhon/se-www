@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import { Button } from '@mui/material';
 import ImageUpload from './ImageUpload';
-import TimeInput from './TimeInput';
 import {FaGasPump} from 'react-icons/fa';
 import {BsHouseDoorFill} from 'react-icons/bs';
 import {GiVillage} from 'react-icons/gi';
@@ -23,6 +22,17 @@ function MainPage() {
   const [stationName, setStationName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const navigate = useNavigate();
+  const [time, setTime] = React.useState("");
+  const [times, setTimes] = React.useState("");
+
+  const handleChange = (event) => {
+    setTime(event.target.value); 
+    console.log(event.target.value);
+  };
+  const handleChanges = (event) => {
+      setTimes(event.target.value);
+      console.log(event.target.value);
+    };
   function handleNameChange(event) {
     setStationName(event.target.value); // อัพเดทค่า name ตามค่าที่ผู้ใช้กรอกใน input
   }
@@ -39,16 +49,17 @@ function MainPage() {
   }
 
   const handleSubmit = () => {
-    axios.post('http://localhost:5000/api/save-data', {
+    axios.post('http://localhost:5000/api/save-data2', {
       
       // age: inputs.age,
       // quantity: inputs.quantity, 
       // price: inputs.price, 
       // priceHome: inputs.priceHome
-        age: stationName,
-        quantity: gender, 
-        price: phoneNumber, 
-        priceHome: gender
+      nameL: stationName,
+      Location: gender, 
+      phone: phoneNumber, 
+      time1: time,
+      time2: times
      })
       .then(response => {
         console.log('Data saved successfully!');
@@ -68,32 +79,34 @@ function MainPage() {
       <h2>เลือกประเภทของสถานที่ตั้ง</h2>
       <FormControl style={{justifyContent:'center'}}>
         <RadioGroup onChange={handerClick2}>
-      <FormControlLabel  value="ปั๊มน้ำมัน" control={<Radio />} label={<div><FaGasPump size={50} />ปั๊มน้ำมัน</div>}/>
-      <FormControlLabel  value="บ้าน" control={<Radio />} label={<div><BsHouseDoorFill size={50}/>บ้าน</div>}/>
-      <FormControlLabel  value="หมู่บ้าน" control={<Radio />} label={<div><GiVillage size={50}/>หมู่บ้าน</div>}/>
-      <FormControlLabel  value="คอนโด" control={<Radio />} label={<div><FaHotel size={50}/>คอนโด</div>}/>
-      <FormControlLabel  value="โรงแรม" control={<Radio />} label={<div><RiHotelFill size={50}/>โรงแรม</div>}/>
-      </RadioGroup>
+          <FormControlLabel  value="ปั๊มน้ำมัน" control={<Radio />} label={<div><FaGasPump size={50} />ปั๊มน้ำมัน</div>}/>
+          <FormControlLabel  value="บ้าน" control={<Radio />} label={<div><BsHouseDoorFill size={50}/>บ้าน</div>}/>
+          <FormControlLabel  value="หมู่บ้าน" control={<Radio />} label={<div><GiVillage size={50}/>หมู่บ้าน</div>}/>
+          <FormControlLabel  value="คอนโด" control={<Radio />} label={<div><FaHotel size={50}/>คอนโด</div>}/>
+          <FormControlLabel  value="โรงแรม" control={<Radio />} label={<div><RiHotelFill size={50}/>โรงแรม</div>}/>
+        </RadioGroup>
       </FormControl>
       
       
       <h4>เบอร์โทรติดต่อสถานีชาร์จ
-      <input type='tel' value={phoneNumber} placeholder='เบอร์โทรติดต่อสถานีชาร์จ' style={{height:30, width:250,textAlign:'center',margin:10}} onChange={handlephoneChange}/>
+      <input type='tel' value={phoneNumber} placeholder='เบอร์โทรติดต่อสถานีชาร์จ' style={{height:30, width:250,textAlign:'center',margin:10}} maxLength={10} onChange={handlephoneChange}/>
       </h4>
       
-      <TimeInput/>
+      <h2>เวลาเปิด-ปิด</h2>
+        <h2><input
+          type="time"
+          value={time}
+          onChange={handleChange}
+        />  ถึง  <input
+        type="time"
+        value={times}
+        onChange={handleChanges}
+      /></h2>
       <ImageUpload/>
       <div style={{display:'flex', justifyContent:'space-between'}}>
         <Button variant="contained" onClick={handerClick2}>Back</Button>
       <Button variant="contained" onClick={handleSubmit}>Next</Button>
-      </div>
-      
-        {/* <CheckBug/> 
-       <SelectLabels/> 
-       <Bank/> 
-      <SuccessPage/> */}
-      
-      
+      </div>  
     </div>
   );
   

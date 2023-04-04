@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect} from 'react';
 import axios from 'axios';
-import { display } from "@mui/system";
+
 
 function CheckBug(){
     const navigate = useNavigate();
@@ -38,7 +38,7 @@ function CheckBug(){
           setCheckedBoxes([...checkedBoxes.slice(0, index), ...checkedBoxes.slice(index + 1)]);
           setCount(count - 1);
         }
-        
+        console.log(checkedBoxes)
       }
     return(
         <div style={{textAlign:'center',justifyContent:'center'}}>

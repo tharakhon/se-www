@@ -51,8 +51,8 @@ function MapApis() {
   }
   const handleSubmit = () => {
     axios.post('http://localhost:5000/api/save-data3', {
-      marker:markerPosition.lat(),
-      markers:markerPosition.lng(),
+      marker:markerPosition.lat,
+      markers:markerPosition.lng,
       gender: gender, 
       genders: genders, 
       address: stationName,
